@@ -166,6 +166,11 @@ app.get('/streams/:id', async (req, res) => {
   }
 });
 
+app.use(express.static('dist'))
+app.get('*', function(req, res) {
+res.sendFile('dist/index.html', { root: '.' })
+})
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
